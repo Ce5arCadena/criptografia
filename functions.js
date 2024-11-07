@@ -2,9 +2,9 @@ const forge = require('node-forge');
 const CryptoJS = require('crypto-js');
 
 const encrypt = (user, password, key) => {
-    if (!password) {
+    if (!password || !user || !key) {
         return {error: 'No se pudo encriptar la contraseña'};
-    }
+    };
 
     const data = `${user} ${password}`;
     const dataEncrypted = CryptoJS.AES.encrypt(data, key).toString();
